@@ -209,9 +209,9 @@
                         <div class="card mb-3">
 
                             <iframe width="850" height="300"
-                                src="https://maps.google.com/maps?q={{ $parkinglot->lonlat }}&output=embed">
+                                src="https://maps.google.com/maps?q=-7.269516,112.738233&output=embed">
                             </iframe>
-
+                            {{-- {{ $parkinglot->lonlat }} --}}
                         </div>
 
                         <div class="card mb-3">

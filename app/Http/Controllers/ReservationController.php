@@ -28,8 +28,6 @@ class ReservationController extends Controller
 
         if (empty($availableParkingNumbers)) {
             return redirect()->back();
-
-            // ->with('error', 'Parkiran penuh. Mohon coba lagi nanti.');
         }
 
         $parkingNumber = $availableParkingNumbers[array_rand($availableParkingNumbers)];
@@ -48,12 +46,6 @@ class ReservationController extends Controller
         $validatedData['status'] = 0;
 
         Reservation::create($validatedData);
-
-        // UserHistory::create([
-        // 'user_id' => $id_user,
-        // 'parkinglots_id' => $parkinglot->idparking,
-        // 'action' => 'Booking',
-        // ]);
 
         return redirect('/parkir')->with('succsess','Booking selesai dibuat.');
 
