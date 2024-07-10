@@ -109,7 +109,7 @@ Route::post('/login', [LoginController::class, 'logout']);
 Route::post('/home', [LoginController::class, 'logout'])->name('logout');
 
 Route::get('/register', [RegisterController::class, 'index']);
-Route::post('/register', [RegisterController::class, 'store']);
+Route::post('/register', [RegisterController::class, 'store'])->name('user.register');
 
 Route::get('/parkir', [ParkingLotsController::class, 'index']);
 
