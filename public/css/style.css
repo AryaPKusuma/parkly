@@ -1,0 +1,19 @@
+.logoku {
+  width: 50px;
+}
+
+body {
+  font-family: "poppins", sans-serif;
+}
+
+.login {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-awesome {
+  font-size: xx-large;
+  fill: rgb(0, 102, 255);
+}
