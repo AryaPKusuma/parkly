@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   app:
-    image: laravel:latest
+    image: laravel
     ports:
       - 8000:8000
     volumes:
