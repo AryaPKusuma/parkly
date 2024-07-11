@@ -19,5 +19,3 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: parkly
-      MYSQL_USER: root
-      MYSQL_PASSWORD: root
