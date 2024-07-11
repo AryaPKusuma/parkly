@@ -19,8 +19,8 @@ jobs:
         env:
           MYSQL_ROOT_PASSWORD: root
           MYSQL_DATABASE: test_db
-          MYSQL_USER: test_user
-          MYSQL_PASSWORD: test_password
+          MYSQL_USER: root
+          MYSQL_PASSWORD: root
         options: >-
           --health-cmd="mysqladmin ping --silent"
           --health-interval=10s
@@ -31,17 +31,12 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Set up Docker Compose
-        run: docker-compose up -d
-
-      - name: Wait for MySQL to start
-        run: |
-          docker-compose exec -T mysql sh -c 'until mysql -u"$MYSQL_USER" -p"$MYSQL_PASSWORD" -e ";" &> /dev/null; do sleep 1; done'
-
       - name: Set up PHP
         uses: shivammathur/setup-php@v2
         with:
           php-version: '8.2'
+          extensions: mbstring, pdo, pdo_mysql
+          tools: composer
 
       - name: Install Composer dependencies
         run: composer install --prefer-dist --no-ansi --no-interaction --no-progress --optimize-autoloader
