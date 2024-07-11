@@ -18,9 +18,9 @@ jobs:
           - 3306:3306
         env:
           MYSQL_ROOT_PASSWORD: root
-          MYSQL_DATABASE: test_db
-          MYSQL_USER: root
-          MYSQL_PASSWORD: root
+          MYSQL_DATABASE: parkly
+          # MYSQL_USER: root
+          # MYSQL_PASSWORD: root
         options: >-
           --health-cmd="mysqladmin ping --silent"
           --health-interval=10s
@@ -48,7 +48,16 @@ jobs:
         run: php artisan key:generate
 
       - name: Run database migrations
-        run: php artisan migrate --force
+        run: php artisan migrate:fresh
+
+      - name: remove php unit
+        run: composer remove phpunit/phpunit
+
+      - name: install pest
+        run: composer require pestphp/pest --dev --with-all-dependencies
+
+      - name: install pest plugin
+        run: composer require pestphp/pest-plugin-laravel --dev
         
       - name: Run tests with Pest
-        run: vendor/bin/pest
+        run: php artisan test
