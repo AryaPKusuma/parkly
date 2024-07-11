@@ -2,7 +2,9 @@ version: '3.8'
 
 services:
   app:
-    image: laravel
+    build:
+      context: .
+      dockerfile: Dockerfile
     ports:
       - 8000:8000
     volumes:
@@ -18,5 +20,4 @@ services:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: parkly
       MYSQL_USER: root
-      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
-      MYSQL_PASSWORD:
+      MYSQL_PASSWORD: root
