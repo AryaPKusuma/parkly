@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  app:
+    image: laravel:latest
+    ports:
+      - 8000:8000
+    volumes:
+      - .:/var/www/html
+    depends_on:
+      - mysql
+
+  mysql:
+    image: mysql:latest
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: parkly
+      MYSQL_USER: root
+      MYSQL_ALLOW_EMPTY_PASSWORD: yes
+      MYSQL_PASSWORD:
